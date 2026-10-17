@@ -1,0 +1,35 @@
+# Web framework
+fastapi
+uvicorn[standard]
+
+# Frontend
+streamlit
+
+# PDF extraction
+pymupdf
+pytesseract
+pillow
+
+# Vector database
+chromadb
+
+# LLM runtime
+ollama
+
+# Keyword search
+rank-bm25
+
+# Fallback splitter
+langchain-text-splitters
+
+# Data / eval
+pandas
+matplotlib
+
+# Config / utilities
+python-dotenv
+python-dateutil
+requests
+
+# Testing
+pytest

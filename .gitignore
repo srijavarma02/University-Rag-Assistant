@@ -1,2 +1,34 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
 
+# ---- Virtual environment ----
+.venv/
+venv/
+env/
+
+# ---- Environment files (secrets) ----
+.env
+
+# ---- Data: ChromaDB, logs (do not commit) ----
+data/*
+!data/.gitkeep
+
+# ---- Pytest ----
+.pytest_cache/
+
+# ---- IDE ----
+.vscode/
+.idea/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Documents (PDFs are large / may be copyrighted) ----
+documents/**/*.pdf
+
+# ---- Existing ----
 OllamaSetup.exe
