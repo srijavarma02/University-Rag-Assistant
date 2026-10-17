@@ -42,6 +42,14 @@ SCORE_THRESHOLD: float = float(os.getenv("SCORE_THRESHOLD", "0.3"))
 LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.1"))
 
 # ---------------------------------------------------------------------------
+# Tesseract OCR (only needed for scanned PDFs)
+# ---------------------------------------------------------------------------
+# Default is the standard Windows install path; set TESSERACT_CMD in .env
+# to override (e.g. /usr/bin/tesseract on Mac/Linux).
+_TESSERACT_DEFAULT = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+TESSERACT_CMD: str = os.getenv("TESSERACT_CMD", _TESSERACT_DEFAULT)
+
+# ---------------------------------------------------------------------------
 # Derived constants
 # ---------------------------------------------------------------------------
 SYLLABUS_DIR: Path = DOCUMENTS_DIR / "syllabus"
