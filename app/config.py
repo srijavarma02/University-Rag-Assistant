@@ -27,7 +27,7 @@ CHROMA_PATH: Path = ROOT_DIR / os.getenv("CHROMA_PATH", "data/chroma")
 # Ollama settings
 # ---------------------------------------------------------------------------
 OLLAMA_URL: str = os.getenv("OLLAMA_URL", "http://localhost:11434")
-LLM_MODEL: str = os.getenv("LLM_MODEL", "llama3.1:8b")
+LLM_MODEL: str = os.getenv("LLM_MODEL", "llama3.2:3b")
 EMBED_MODEL: str = os.getenv("EMBED_MODEL", "nomic-embed-text")
 
 # ---------------------------------------------------------------------------
