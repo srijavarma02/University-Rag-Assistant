@@ -341,6 +341,11 @@ def retrieve(
     query_embedding = embed_text(question)
     vector_results = store.search(query_embedding, top_k=fetch_k, filters=where)
 
+    # Preserve the raw vector similarity so a threshold gate can use it
+    # (the fused RRF score replaces ``score`` below).
+    for r in vector_results:
+        r.metadata["_vector_score"] = r.score
+
     # 4. BM25 keyword search over the same candidate pool
     #    Build the BM25 corpus from the filtered texts.
     corpus_results = vector_results  # reuse candidates for keyword scoring
