@@ -10,9 +10,24 @@ from typing import Iterator
 
 import ollama
 
-from app.config import LLM_MODEL, LLM_TEMPERATURE
+from app.config import (
+    LLM_MODEL,
+    LLM_NUM_CTX,
+    LLM_NUM_PREDICT,
+    LLM_TEMPERATURE,
+)
 
 logger = logging.getLogger(__name__)
+
+
+def _options(temperature: float) -> dict:
+    """Build the Ollama options dict, honouring memory-saving limits."""
+    opts: dict = {"temperature": temperature}
+    if LLM_NUM_CTX > 0:
+        opts["num_ctx"] = LLM_NUM_CTX
+    if LLM_NUM_PREDICT > 0:
+        opts["num_predict"] = LLM_NUM_PREDICT
+    return opts
 
 
 def chat(
@@ -24,7 +39,7 @@ def chat(
     response = ollama.chat(
         model=model,
         messages=messages,
-        options={"temperature": temperature},
+        options=_options(temperature),
     )
     return response["message"]["content"]
 
@@ -41,7 +56,7 @@ def chat_stream(
     stream = ollama.chat(
         model=model,
         messages=messages,
-        options={"temperature": temperature},
+        options=_options(temperature),
         stream=True,
     )
     for chunk in stream:

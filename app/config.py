@@ -41,6 +41,13 @@ SCORE_THRESHOLD: float = float(os.getenv("SCORE_THRESHOLD", "0.3"))
 # ---------------------------------------------------------------------------
 LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.1"))
 
+# Context window (tokens). A smaller value uses less memory per request,
+# which helps on low-RAM machines. 0 = use the model's default.
+LLM_NUM_CTX: int = int(os.getenv("LLM_NUM_CTX", "4096"))
+
+# Max tokens to generate in the answer (caps memory + latency). 0 = unlimited.
+LLM_NUM_PREDICT: int = int(os.getenv("LLM_NUM_PREDICT", "512"))
+
 # ---------------------------------------------------------------------------
 # Tesseract OCR (only needed for scanned PDFs)
 # ---------------------------------------------------------------------------
