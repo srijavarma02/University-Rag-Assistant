@@ -11,6 +11,7 @@ from typing import Iterator
 import ollama
 
 from app.config import (
+    LLM_KEEP_ALIVE,
     LLM_MODEL,
     LLM_NUM_CTX,
     LLM_NUM_PREDICT,
@@ -40,6 +41,7 @@ def chat(
         model=model,
         messages=messages,
         options=_options(temperature),
+        keep_alive=LLM_KEEP_ALIVE,
     )
     return response["message"]["content"]
 
@@ -57,6 +59,7 @@ def chat_stream(
         model=model,
         messages=messages,
         options=_options(temperature),
+        keep_alive=LLM_KEEP_ALIVE,
         stream=True,
     )
     for chunk in stream:

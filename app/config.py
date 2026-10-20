@@ -48,6 +48,10 @@ LLM_NUM_CTX: int = int(os.getenv("LLM_NUM_CTX", "4096"))
 # Max tokens to generate in the answer (caps memory + latency). 0 = unlimited.
 LLM_NUM_PREDICT: int = int(os.getenv("LLM_NUM_PREDICT", "512"))
 
+# How long Ollama keeps the model loaded after a request. Keeping it
+# resident avoids slow reloads on every question. e.g. "30m", "-1" = forever.
+LLM_KEEP_ALIVE: str = os.getenv("LLM_KEEP_ALIVE", "30m")
+
 # ---------------------------------------------------------------------------
 # Tesseract OCR (only needed for scanned PDFs)
 # ---------------------------------------------------------------------------
